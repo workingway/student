@@ -51,7 +51,7 @@ include '../config.php';
                     <div class="card-body">
                         <h5 class="card-title">My Courses</h5>
                         <p class="card-text">Check your enrolled courses or subjects</p>
-                        <a href="#" class="btn btn-light">View Courses</a>
+                        <a href="course.php" class="btn btn-light">View Courses</a>
                     </div>
                 </div>
             </div>
