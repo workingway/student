@@ -1,0 +1,46 @@
+✅ FULL DATABASE SQL (FINAL)
+1️⃣ Create Database
+CREATE DATABASE IF NOT EXISTS student_management;
+USE student_management;
+
+2️⃣ Users Table (Login / Register)
+CREATE TABLE users (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    role ENUM('teacher','student') NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id)
+);
+
+3️⃣ Student Records Table (Student Profile)
+CREATE TABLE student_records (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    phone VARCHAR(15) DEFAULT NULL,
+    address VARCHAR(255) DEFAULT NULL,
+    course VARCHAR(100) DEFAULT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id)
+);
+
+4️⃣ (OPTIONAL BUT RECOMMENDED) Foreign Key Relationship
+
+This links student_records.email to users.email for data integrity.
+
+ALTER TABLE student_records
+ADD CONSTRAINT fk_student_user
+FOREIGN KEY (email) REFERENCES users(email)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+
+5️⃣ TEST INSERT (OPTIONAL)
+INSERT INTO users (name, email, password, role)
+VALUES ('Test Student', 'student@test.com', 'hashed_password', 'student');
+
+6️⃣ VERIFY TABLES
+SHOW TABLES;
+DESCRIBE users;
+DESCRIBE student_records;
